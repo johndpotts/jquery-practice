@@ -38,7 +38,7 @@ $('#listener-result').html($("#listener").val());
 //----------------------------------
 /*#5- event delegation in vanilla js*/
 $('ul').on('click','li',function(){
-  alert("you clicked on" + $(this).text())
+  alert("You just clicked on " + $(this).text())
 }
 );
 
