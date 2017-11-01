@@ -1,11 +1,12 @@
 
 function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
+if($('[name="fname"]').val() == ""){
         alert("Name must be filled out");
         return false;
-    }
+      }
+
 }
+
 
 
 //-------------------------------------------------------
@@ -27,42 +28,34 @@ function validateNumber() {
 
 //-----------------------------------------------
 /* #4- event listener */
-document.getElementById("listener").addEventListener('input', doThing);
+
 
 /* function */
-function doThing(){
-  var result = document.getElementById("listener-result");
-  result.innerHTML = this.value;
-}
+$('#listener').on('input',  function() {
+$('#listener-result').html($("#listener").val());
+});
 
 //----------------------------------
 /*#5- event delegation in vanilla js*/
-var ul = document.getElementsByTagName('ul')
-ul[0].addEventListener('click',
-function(name){
-  alert(name.target.innerHTML);
+$('ul').on('click','li',function(){
+  alert($(this).text())
 }
 );
 
 //---------------------------------
 /*#6- add an element dynamically*/
 function addElement(){
-var newDiv = document.createElement('div');
-newDiv.innerHTML = "Bonjour!";
-newDiv.setAttribute('style',' background-color:green; color:white; font-size:20px; text-align:center; margin:15px;height:40px; width: 100px; cursor:pointer; font-family: sans-serif; line-height:40px;');
-var theButtonToPutItAbove = document.getElementById('make-a-div');
-document.body.insertBefore(newDiv,theButtonToPutItAbove);
-
+var $div=$('<div>', {'style':' background-color:green; color:white; font-size:20px; text-align:center; margin:15px;height:40px; width: 100px; cursor:pointer; font-family: sans-serif; line-height:40px;'});
+$div.html('bonjour')
+$('#make-a-div').before($div);
 }
 
 //---------------------------------
 /*#7- delete an element dynamically*/
 function deleteMe(){
-var element = document.getElementById("red-box");
-element.parentNode.removeChild(element);
+$('#red-box').remove()
 }
 
 function resizeMe(){
-var div = document.getElementById("blue-box");
-div.setAttribute('style', 'height:100px;width:300px;')
+$('blue-box').css('height:100px;width:300px;')
 }
